@@ -62,4 +62,37 @@
     );
     ReactDOM.render(element3, document.getElementById("root"));
   </script>
+
+  <!-- Validation with PropTypes -->
+  <script type="text/babel">
+    const PropTypes = {
+        string(props, propName, componentName) {
+        // console.log(props, propName, componentName);
+        const type = typeof props[propName];
+        if(type !== 'string'){
+            return new Error(
+            `Hey, the component name ${componentName} needs the prop ${propName} to be a type of "string" but was passed a ${type}`
+         )
+        }
+    }
+    }
+    function Message({ subject, greeting }) {
+      return(
+      <div className="message">
+        {subject}, {greeting}
+      </div>
+      )
+    }
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
+    };
+    const element4 = (
+      <div className="container">
+        <Message greeting="Hello" subject="World" />
+        <Message greeting="GoodBye" subject="World" />
+      </div>
+    );
+    ReactDOM.render(element4, document.getElementById("root"));
+  </script>
 </body>
