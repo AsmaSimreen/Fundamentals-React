@@ -24,7 +24,7 @@
         {goodByeElem}
       </div>
     );
-    ReactDOM.createRoot(document.getElementById("root")).render(element);
+    ReactDOM.render(element, document.getElementById("root"));
   </script>
 
   <!-- Extra Credit -->
@@ -48,6 +48,18 @@
       </div>
     );
     ReactDOM.render(element, document.getElementById("root"));
-    ReactDOM.createRoot(document.getElementById("root")).render(element2);
+  </script>
+
+  <!-- 💯 Using a Custom Component with JSX -->
+  <script type="text/babel">
+    function Message({ children }) {
+      return <div className="message">{children}</div>;
+    }
+    const element3 = (
+      <div className="container">
+        <Message>Hello World</Message>;<Message>Good Bye World</Message>;
+      </div>
+    );
+    ReactDOM.render(element3, document.getElementById("root"));
   </script>
 </body>
