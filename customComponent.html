@@ -1,0 +1,53 @@
+<!-- Creating custom components -->
+<!-- 
+   🐨 Make a function called `message` which returns the JSX we want to share
+   🐨 use that function in place of the divs below with:
+   💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})} 
+-->
+<!-- 💯 This is only the first step to making actual React components. The rest is in the extra credit! -->
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script type="text/babel">
+    function message({ children }) {
+      return <div className="message">{children}</div>;
+    }
+    const helloElem = message({ children: "Hello World" });
+    const goodByeElem = message({ children: "Goodbye World" });
+
+    const element = (
+      <div className="container">
+        {helloElem}
+        {goodByeElem}
+      </div>
+    );
+    ReactDOM.createRoot(document.getElementById("root")).render(element);
+  </script>
+
+  <!-- Extra Credit -->
+  <!-- 💯 Using a Custom Component with React.createElement -->
+
+  <script type="text/babel">
+    function message({ children }) {
+      return <div className="message">{children}</div>;
+    }
+    const helloElement = React.createElement(message, {
+      children: "Hello World",
+    });
+    const goodByeElement = React.createElement(message, {
+      children: "Good Bye World",
+    });
+
+    const element2 = (
+      <div className="container">
+        {helloElement}
+        {goodByeElement}
+      </div>
+    );
+    ReactDOM.render(element, document.getElementById("root"));
+    ReactDOM.createRoot(document.getElementById("root")).render(element2);
+  </script>
+</body>
